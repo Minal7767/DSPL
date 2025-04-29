@@ -7,7 +7,7 @@ import plotly.express as px
 st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard", page_icon="🇱🇰", layout="wide")
 
 # Load the dataset directly from file path
-dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPLINDIVIDUAL/gender_lka (1).csv')
+dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv')
 df = pd.read_csv(dataset_path)
 
 # Filter data for Sri Lanka only
