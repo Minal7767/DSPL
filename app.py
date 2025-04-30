@@ -53,9 +53,8 @@ if page == " Dashboard":
 
     df_trend = filtered_data.groupby('Year')['Value'].mean().reset_index()
 
-    # ------------------------------------------
-    # Commit 5: Tabs for Visualizations
-    # ------------------------------------------
+    
+    # Tabs for Visualizations
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
         "Line Chart", "Bar Chart", "Scatter Plot", "Box Plot", "Histogram", "Area Chart", "Statistics"
     ])
