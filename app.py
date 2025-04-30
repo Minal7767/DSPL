@@ -1,37 +1,38 @@
-# Import libraries
+ # Initial Data Loading and Setup
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 import matplotlib as plt
 
-# Page Configuration
+# Set page configuration FIRST (to avoid Streamlit errors)
 st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard(Gender)", page_icon="🇱🇰", layout="wide")
 
-# Load the dataset directly from file path
-dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv')
-df= pd.read_csv(dataset_path)
+# Load dataset
+dataset_path = '/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv'
+df = pd.read_csv(dataset_path)
 
-# Filter data for Sri Lanka only
+# Filter Sri Lanka-only data
 sri_lanka_df = df[df['Country Name'] == 'Sri Lanka']
 
 # Sidebar Navigation
-st.sidebar.title(" Navigation")
+st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", [" Dashboard", "Dashboard Outline"])
 
-# If Dashboard Selected
-
+# ------------------------------------------
+# Commit 2: Metrics and Header Display
+# ------------------------------------------
 if page == " Dashboard":
-    # PAGE HEADER 
     st.title("🌍🇱🇰Sri Lanka Data Analysis Dashboard")
     st.markdown("---")
     st.markdown("This dashboard visualizes key indicators related to Sri Lanka, using interactive plots and summary statistics.")
     st.markdown("---")
 
-    # METRICS Section 
+    # Metric Calculations
     total_records = len(sri_lanka_df)
     total_years = sri_lanka_df['Year'].nunique()
     average_value = round(pd.to_numeric(sri_lanka_df['Value'], errors='coerce').mean(), 2)
 
+    # Display Metrics
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Records", total_records)
     col2.metric("Unique Years", total_years)
@@ -39,27 +40,28 @@ if page == " Dashboard":
 
     st.markdown("---")
 
-    # RAW DATA Preview
+    # ------------------------------------------
+    # Commit 3: Raw Data Preview
+    # ------------------------------------------
     with st.expander("View Raw Data"):
         st.dataframe(sri_lanka_df)
 
-    # FILTER Indicator Selection 
-    indicator = st.selectbox(" Select an Indicator to Analyze", sri_lanka_df['Indicator Name'].unique())
+    # ------------------------------------------
+    # Commit 4: Indicator Selection and Filtering
+    # ------------------------------------------
+    indicator = st.selectbox("Select an Indicator to Analyze", sri_lanka_df['Indicator Name'].unique())
 
-    # Filtered data
     filtered_data = sri_lanka_df[sri_lanka_df['Indicator Name'] == indicator]
-
-    # Safely convert 'Value' column to numeric
     filtered_data['Value'] = pd.to_numeric(filtered_data['Value'], errors='coerce')
 
-    # Show warning if there are non-numeric values
     if filtered_data['Value'].isna().sum() > 0:
         st.warning("Some non-numeric values were found and ignored in calculations.")
 
-    # Prepare trend data
     df_trend = filtered_data.groupby('Year')['Value'].mean().reset_index()
 
-    # TABS Section 
+    # ------------------------------------------
+    # Commit 5: Tabs for Visualizations
+    # ------------------------------------------
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
         "Line Chart", "Bar Chart", "Scatter Plot", "Box Plot", "Histogram", "Area Chart", "Statistics"
     ])
@@ -111,7 +113,9 @@ if page == " Dashboard":
         st.subheader("Summary Statistics")
         st.write(filtered_data[['Year', 'Value']].describe())
 
-    # DOWNLOAD Section
+    # ------------------------------------------
+    # Commit 6: Download CSV Section
+    # ------------------------------------------
     st.markdown("---")
     st.subheader("Download Filtered Data")
     csv = filtered_data.to_csv(index=False).encode('utf-8')
@@ -122,14 +126,15 @@ if page == " Dashboard":
         mime='text/csv',
     )
 
-
-# If Outline Selected
+# ------------------------------------------
+# Commit 7: Dashboard Outline Page
+# ------------------------------------------
 elif page == "Dashboard Outline":
     st.title("Dashboard Outline: Sri Lanka Data Analysis Dashboard")
     st.markdown("---")
 
     st.subheader("1. Title of Dashboard")
-    st.markdown("> Sri Lanka Data Analysis Dashboard**")
+    st.markdown("> **Sri Lanka Data Analysis Dashboard**")
 
     st.subheader("2. Main Purpose")
     st.markdown("""
@@ -141,10 +146,10 @@ elif page == "Dashboard Outline":
 
     st.subheader("3. Target Users")
     st.markdown("""
-    - Government Officials
-    - Data Scientists
-    - Policy Makers
-    - Academic Researchers
+    - Government Officials  
+    - Data Scientists  
+    - Policy Makers  
+    - Academic Researchers  
     """)
 
     st.subheader("4. Dashboard Sections")
@@ -161,30 +166,28 @@ elif page == "Dashboard Outline":
 
     st.subheader("5. Technologies Used")
     st.markdown("""
-    - Python (Pandas, Streamlit, Plotly)
-    - Streamlit Cloud (for deployment)
-    - GitHub (for version control)
-    - VS Code (for development)
+    - Python (Pandas, Streamlit, Plotly)  
+    - Streamlit Cloud (for deployment)  
+    - GitHub (for version control)  
+    - VS Code (for development)  
     """)
 
     st.subheader("6. Visualizations Provided")
     st.markdown("""
-    - Line Chart — Trends over Years
-    - Bar Chart — Top 10 Values
-    - Scatter Plot — Spread across Years
-    - Box Plot — Distribution Analysis
-    - Histogram — Value Frequency
-    - Area Chart — Cumulative Trends
-    - Statistics — Summary Table
+    - Line Chart — Trends over Years  
+    - Bar Chart — Top 10 Values  
+    - Scatter Plot — Spread across Years  
+    - Box Plot — Distribution Analysis  
+    - Histogram — Value Frequency  
+    - Area Chart — Cumulative Trends  
+    - Statistics — Summary Table  
     """)
 
     st.subheader("7. Final Features Summary")
     st.markdown("""
-    - Interactive and Dynamic Interface
-    - Fast Data Filtering
-    - Clean and Professional Visuals
-    - CSV Export Option
-    - Responsive Layout
+    - Interactive and Dynamic Interface  
+    - Fast Data Filtering  
+    - Clean and Professional Visuals  
+    - CSV Export Option  
+    - Responsive Layout  
     """)
-
-    st.success("Dashboard outline Displayed successfully")
