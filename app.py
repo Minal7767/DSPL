@@ -38,9 +38,7 @@ if page == " Dashboard":
 
     st.markdown("---")
 
-    # ------------------------------------------
     # Commit 3: Raw Data Preview
-    # ------------------------------------------
     with st.expander("View Raw Data"):
         st.dataframe(sri_lanka_df)
 
