@@ -12,12 +12,11 @@ dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender
 df= pd.read_csv(dataset_path)
 
 # Filter data for Sri Lanka only
-sri_lanka_df = df.query("`Country Name` == 'Sri Lanka'")
+sri_lanka_df = df[df['Country Name'] == 'Sri Lanka']
 
 # Sidebar Navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Dashboard", "Dashboard Outline"])
-
+st.sidebar.title(" Navigation")
+page = st.sidebar.radio("Go to", [" Dashboard", "Dashboard Outline"])
 
 # If Dashboard Selected
 
