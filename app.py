@@ -18,9 +18,7 @@ sri_lanka_df = df[df['Country Name'] == 'Sri Lanka']
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", [" Dashboard", "Dashboard Outline"])
 
-# ------------------------------------------
-# Commit 2: Metrics and Header Display
-# ------------------------------------------
+# Metrics and Header Display
 if page == " Dashboard":
     st.title("🌍🇱🇰Sri Lanka Data Analysis Dashboard")
     st.markdown("---")
