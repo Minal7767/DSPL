@@ -118,9 +118,7 @@ if page == " Dashboard":
         mime='text/csv',
     )
 
-# ------------------------------------------
-# Commit 7: Dashboard Outline Page
-# ------------------------------------------
+# Dashboard Outline Page
 elif page == "Dashboard Outline":
     st.title("Dashboard Outline: Sri Lanka Data Analysis Dashboard")
     st.markdown("---")
