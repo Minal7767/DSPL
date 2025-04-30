@@ -15,8 +15,9 @@ df= pd.read_csv(dataset_path)
 sri_lanka_df = df.query("`Country Name` == 'Sri Lanka'")
 
 # Sidebar Navigation
-st.sidebar.title(" Navigation")
-page = st.sidebar.radio("Go to", [" Dashboard", "Dashboard Outline"])
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Dashboard", "Dashboard Outline"])
+
 
 # If Dashboard Selected
 
