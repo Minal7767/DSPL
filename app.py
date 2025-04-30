@@ -5,7 +5,7 @@ import plotly.express as px
 import matplotlib as plt
 
 # Page Configuration
-st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard", page_icon="🇱🇰", layout="wide")
+st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard(Gender)", page_icon="🇱🇰", layout="wide")
 
 # Load the dataset directly from file path
 dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv')
@@ -54,7 +54,7 @@ if page == " Dashboard":
 
     # Show warning if there are non-numeric values
     if filtered_data['Value'].isna().sum() > 0:
-        st.warning("⚠️ Some non-numeric values were found and ignored in calculations.")
+        st.warning("Some non-numeric values were found and ignored in calculations.")
 
     # Prepare trend data
     df_trend = filtered_data.groupby('Year')['Value'].mean().reset_index()
