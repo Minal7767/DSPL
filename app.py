@@ -9,7 +9,7 @@ st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard", page_icon="ðŸ
 
 # Load the dataset directly from file path
 dataset_path = ('/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv')
-df = pd.read_csv(dataset_path)
+df= pd.read_csv(dataset_path)
 
 # Filter data for Sri Lanka only
 sri_lanka_df = df[df['Country Name'] == 'Sri Lanka']
