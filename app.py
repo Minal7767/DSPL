@@ -38,13 +38,11 @@ if page == " Dashboard":
 
     st.markdown("---")
 
-    # Commit 3: Raw Data Preview
+    #Raw Data Preview
     with st.expander("View Raw Data"):
         st.dataframe(sri_lanka_df)
 
-    # ------------------------------------------
-    # Commit 4: Indicator Selection and Filtering
-    # ------------------------------------------
+    # Indicator Selection and Filtering
     indicator = st.selectbox("Select an Indicator to Analyze", sri_lanka_df['Indicator Name'].unique())
 
     filtered_data = sri_lanka_df[sri_lanka_df['Indicator Name'] == indicator]
