@@ -187,4 +187,4 @@ elif page == "Dashboard Outline":
     - Responsive Layout
     """)
 
-    st.success("Dashboard Outline Displayed Successfully!")
+    st.success("Dashboard outline Displayed successfully")
