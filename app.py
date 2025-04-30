@@ -106,9 +106,8 @@ if page == " Dashboard":
         st.subheader("Summary Statistics")
         st.write(filtered_data[['Year', 'Value']].describe())
 
-    # ------------------------------------------
-    # Commit 6: Download CSV Section
-    # ------------------------------------------
+    
+    # Download CSV Section
     st.markdown("---")
     st.subheader("Download Filtered Data")
     csv = filtered_data.to_csv(index=False).encode('utf-8')
