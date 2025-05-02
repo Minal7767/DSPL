@@ -8,8 +8,9 @@ import matplotlib as plt
 st.set_page_config(page_title="Sri Lanka Data Analysis Dashboard(Gender)", page_icon="🇱🇰", layout="wide")
 
 # Load dataset
-dataset_path = '/Users/minalsanpathfernando/Desktop/DSPL INDIVIDUAL/DSPL/gender_lka1.csv'
+dataset_path = 'gender_lka1.csv'
 df = pd.read_csv(dataset_path)
+
 
 # Filter Sri Lanka-only data
 sri_lanka_df = df[df['Country Name'] == 'Sri Lanka']
